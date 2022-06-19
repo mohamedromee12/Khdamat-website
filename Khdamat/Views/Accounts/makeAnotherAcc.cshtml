@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using System.Globalization
+
+@{
+    ViewData["Title"] = "makeAnotherAcc";
+}
+
+<div class="row">
+    <div class="col-md-4 Login register">
+
+     
+            <h2 class="makeflex graycolor logofont">خدمات</h2>
+            @if (Context.Session.GetString("CurrentView") == "Client")
+                    {
+                <p class="makeflex">اذا كنت ترغب بالمتابعة كعامل اضغط</p>
+            }
+            @if (Context.Session.GetString("CurrentView") == "Worker")
+                    {
+                <p class="makeflex">اذا كنت ترغب بالمتابعة كزبون اضغط</p>
+            }
+           
+            <div class="form-group center">
+                <a class="btn btn-primary defultbutton" asp-area = "" asp-controller = "Accounts" asp-action = "makeAnotherAccount">متابعة</a>
+                @*<input type="submit" value="متابعة" class="btn btn-primary defultbutton" asp-area = "" asp-controller = "Accounts" asp-action = "makeAnotherAccount"  />*@
+            </div>
+
+          
+       
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

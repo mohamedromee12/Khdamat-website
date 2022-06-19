@@ -1,0 +1,58 @@
+﻿@model Khdamat.Models.Account
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@*<h1>Register</h1>
+
+<h4>Account</h4>*@
+@*<hr />*@
+<div class="row">
+    <div class="col-md-4 Login register">
+
+        <form asp-action="Login">
+            <h2 class="makeflex graycolor logofont">خدمات</h2>
+            <h2 class="makeflex">تسجيل دخول</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+               @if (TempData["AlertMessage"] != null)
+                {
+                    <div class="alert alert-danger" >
+                        @TempData["AlertMessage"]
+                    </div>
+                }
+
+            <div class="form-group">
+                @*<label asp-for="Email" class="control-label">البريد الاكتروني</label>*@
+                <input asp-for="Email" class="form-control" placeholder="البريد الالكتروني" />
+                <span asp-validation-for="Email" class="text-danger makeflex"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="Password" class="control-label">كلمة المرور</label>*@
+                <input asp-for="Password" class="form-control" placeholder="كلمة المرور" />
+                <span asp-validation-for="Password" class="text-danger makeflex"></span>
+            </div>
+            <div class="typeofuser">
+                <div class="form-group form-check">
+                    <label class="form-check-label makeflex ">
+
+                        @*@Html.DisplayNameFor(model => model.IsClient)*@
+                    </label>
+                </div>
+            </div>
+            <div class="form-group center">
+                <input type="submit" value="تسجيل دخول" class="btn btn-primary defultbutton" />
+            </div>
+
+            <div class="form-group center">
+                <a class="nav-link defultbutton grayBack" asp-area="" asp-controller="Accounts" asp-action="Register">انشاء حساب</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

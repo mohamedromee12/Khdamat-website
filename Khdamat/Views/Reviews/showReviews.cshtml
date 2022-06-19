@@ -1,0 +1,29 @@
+﻿@model List<Khdamat.Models.Comment>
+
+@{
+    ViewData["Title"] = "showReviews";
+}
+
+<h2 class="makeflex">الريفيوهات</h2>
+<hr />
+
+@foreach (var item in Model)
+{
+
+
+    <div>
+        <div class="makeflex">
+            <p class="rigthTitle">اسم الزبون:</p>
+            <p class="leftInfo">@item.Name</p>
+        </div>
+        <div class="makeflex">
+            <p class="rigthTitle">الريفيو:</p>
+            <p class="leftInfo">@item.Description</p>
+        </div>
+
+
+    </div>
+    <hr />
+}
+
+

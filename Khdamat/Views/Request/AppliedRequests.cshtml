@@ -1,0 +1,66 @@
+﻿@model List<Khdamat.Models.ApplytoReq>
+
+@{
+    ViewData["Title"] = "AppliedRequests";
+}
+
+<h2 class="makeflex">الطلبات المرسلة</h2>
+<hr />
+
+
+@foreach (var item in Model)
+{
+
+
+<div>
+    <div class="makeflex">
+        <p class="rigthTitle">عنوان الطلب:</p>
+        <p class="leftInfo">@item.Request.Title</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle">التفاصيل:</p>
+        <p class="leftInfo">@item.Request.Description_Req</p>
+    </div>
+  
+    <div class="makeflex">
+        <p class="rigthTitle">محتوي الرسالة:</p>
+        <p class="leftInfo">@item.description</p>
+    </div>
+ 
+   @* <div class="makeflex">
+        <p class="rigthTitle">البلد:</p>
+        <p class="leftInfo">@item.worker.Country</p>
+    </div>*@
+    <div class="makeflex">
+        <p class="rigthTitle">المدينة:</p>
+        <p class="leftInfo">@item.Request.City</p>
+    </div>
+
+    <div class="makeflex">
+        <p class="rigthTitle">اكثر سعر:</p>
+        <p class="leftInfo">@item.Request.Max_Price</p>
+    </div>
+
+
+
+
+    <div class="makeflex">
+
+        <a class="btn-primary defultbutton rightButton" href=@Url.Action("deleteApply","Request",new {item.Request.Req_ID, item.Worker_ID})>الغاء الطلب</a>
+
+
+       
+
+
+
+
+    </div>
+
+
+    
+
+</div>
+    <hr />
+}
+
+

@@ -1,0 +1,97 @@
+﻿@model List<Khdamat.Models.Request>
+@using System.Globalization
+@{
+    ViewData["Title"] = "MyRequests";
+}
+
+<h2 class="makeflex">طلباتي</h2>
+<hr />
+
+
+@foreach (var item in Model)
+{
+
+
+<div>
+    <div class="makeflex">
+        <p class="rigthTitle">عنوان الطلب:</p>
+        <p class="leftInfo">@item.Title</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle">التفاصيل:</p>
+        <p class="leftInfo">@item.Description_Req</p>
+    </div>
+
+
+    <div class="makeflex">
+        <p class="rigthTitle">اعلى سعر:</p>
+        <p class="leftInfo">@item.Max_Price</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle">اصغر سن:</p>
+        <p class="leftInfo">@item.Min_Age</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle">اكبر سن:</p>
+        <p class="leftInfo">@item.Max_Age</p>
+    </div>
+
+    @if (item.Supporter_ID == "")
+    {
+        <div class="makeflex">
+            <p class="rigthTitle">الحالة:</p>
+            <p class="leftInfo">تحت المراجعة</p>
+        </div>
+        <div class="makeflex">
+
+            <a class="btn-primary defultbutton rightButton" href=@Url.Action("deletereq", "Request", new { @item.Req_ID })> الغاء الطلب</a>
+
+        </div>
+    }
+
+    @if (item.Supporter_ID != "" && item.Status == 'W')
+    {
+        <div class="makeflex">
+            <p class="rigthTitle">الحالة:</p>
+            <p class="leftInfo">تم النشر</p>
+        </div>
+
+        <div class="makeflex">
+
+            <a class="btn-primary defultbutton rightButton" href=@Url.Action("RecivedRequests", "Request", new { @item.Req_ID })> الطلبات الواردة</a>
+            <a class="btn-primary defultbutton leftButton" href=@Url.Action("deletereq", "Request", new { @item.Req_ID })> الغاء الطلب</a>
+
+        </div>
+
+    }
+
+
+@if (item.Supporter_ID != "" && item.Status == 't')
+{
+<div class="makeflex">
+    <p class="rigthTitle">الحالة:</p>
+    <p class="leftInfo">قيد التنفيذ</p>
+</div>
+            <div class="makeflex">
+            <a class="btn-primary defultbutton rightButton" href=@Url.Action("MakeReview", "Reviews", new { @item.Req_ID })> انهاء وتقييم</a>
+        </div>
+
+}
+
+@if (item.Supporter_ID != "" && item.Status == 'D')
+        {
+            <div class="makeflex">
+                <p class="rigthTitle">الحالة:</p>
+                <p class="leftInfo">منتهية</p>
+            </div>
+        }
+
+
+
+
+
+
+</div>
+    <hr />
+}
+

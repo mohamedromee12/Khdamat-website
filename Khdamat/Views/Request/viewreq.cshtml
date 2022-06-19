@@ -1,0 +1,145 @@
+﻿@model Khdamat.Models.RequestDetails
+@using Microsoft.AspNetCore.Http;
+@using System.Globalization
+
+@{
+    ViewData["Title"] = "viewreq";
+}
+
+<h2 class="makeflex">التفاصيل</h2>
+<hr />
+<div>
+    <div class="makeflex">
+        <p class="rigthTitle">رقم الخدمة:</p>
+        <p class="leftInfo">@Model.id</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle">اسم الخدمة:</p>
+        <p class="leftInfo">@Model.request.Title</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle">نوع الخدمة:</p>
+        <p class="leftInfo">@Model.sname</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle">اسم العميل:</p>
+        <p class="leftInfo">@Model.f_name @Model.l_name</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle">ايميل العميل:</p>
+        <p class="leftInfo">@Model.email</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle">اقل سن:</p>
+        <p class="leftInfo">@Model.request.Min_Age</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle">اكبر سن:</p>
+        <p class="leftInfo">@Model.request.Max_Age</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle">اقل سعر:</p>
+        <p class="leftInfo">@Model.request.Max_Price</p>
+    </div>
+
+    <div class="makeflex">
+        <p class="rigthTitle">النوع:</p>
+        @if (@Model.request.Gender == 'm')
+        {
+            <p class="leftInfo">ذكر</p>
+        }
+        @if (@Model.request.Gender == 'f')
+        {
+            <p class="leftInfo">انثي</p>
+        }
+
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle"> تاريخ تحقق الخدمة:</p>
+        <p class="leftInfo">@Model.request.Date_Req.ToShortDateString()</p>
+    </div>
+    <div class="makeflex">
+        <p class="rigthTitle"> المدينة:</p>
+        <p class="leftInfo">@Model.request.City</p>
+    </div>
+    <div class="makeflex">
+        <div class="rightTitle"> <a class="btn-primary defultbutton rightButton"  href=@Url.Action("acceptreq","Request",new { @Model.request, @Model.id, @Model.f_name, @Model.l_name, @Model.email, @Model.sname})>قبول الخدمة</a></div>
+        <div class="leftInfo"><a class="btn-primary defultbutton leftButton" href=@Url.Action("deletereq","Request",new {@Model.id})>حذف الخدمة</a></div>
+    </div>
+    @*<br />
+    <br />
+    <div class="makeflex">
+        <div class="rightTitle">  <a class="btn-primary defultbutton rightButton" href=@Url.Action("managereq","Request")>رجوع</a></div>
+        
+    </div>*@
+
+</div>
+
+
+
+
+
+@*<div>
+    <label> : رقم الخدمة</label>
+    <p>@Model.id</p>
+</div>
+<div>
+    <label> : اسم العميل</label>
+    <p>@Model.f_name @Model.l_name</p>
+</div>
+<div>
+    <label> : ايميل العميل</label>
+    <p>@Model.email</p>
+</div>
+<div>
+    <label> : اسم الخدمة</label>
+    <p>@Model.request.Title</p>
+</div>
+<div>
+    <label> : نوع الخدمة</label>
+    <p>@Model.sname</p>
+</div>
+
+<div>
+    <label> : اقل سن</label>
+    <p>@Model.request.Min_Age</p>
+</div>
+<div>
+    <label> : اكبر سن</label>
+    <p>@Model.request.Max_Age</p>
+</div>
+<div>
+    <label> : اقل سعر</label>
+    <p>@Model.request.Max_Price</p>
+</div>
+<div>
+    <label> : النوع </label>
+    @if (@Model.request.Gender == 'm')
+    {
+        <p>ذكر</p>
+    }
+    @if (@Model.request.Gender == 'f')
+    {
+        <p>انثي</p>
+    }
+</div>
+<div>
+    <label> : تاريخ تحقق الخدمة </label>
+    <p>@Model.request.Date_Req.ToShortDateString()</p>
+</div>
+<div>
+    <label> : المدينة</label>
+    <p>@Model.request.City</p>
+</div>
+
+<div>
+    <a class="btn-primary" href=@Url.Action("acceptreq","Request",new { @Model.request, @Model.id, @Model.f_name, @Model.l_name, @Model.email, @Model.sname})>قبول الخدمة</a>
+</div>
+<div>
+    <a class="btn-primary" href=@Url.Action("deletereq","Request",new {@Model.id})>حذف الخدمة</a>
+    
+</div>
+<div>
+    <a class="btn-primary" href=@Url.Action("managereq","Request")>رجوع</a>
+    
+</div>*@
